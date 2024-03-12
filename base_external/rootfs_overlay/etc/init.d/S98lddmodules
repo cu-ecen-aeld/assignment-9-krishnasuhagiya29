@@ -1,0 +1,22 @@
+#! /bin/sh
+
+case "$1" in
+	start)
+	echo "Loading files and Drivers"
+	scull_load.sh
+	module_load.sh faulty
+	modprobe hello
+	;;
+	stop)
+	echo "Unloading Files and Drivers"
+	scull_unload.sh
+	module_unload.sh faulty
+	rmmod hello
+	;;
+	*)
+	echo "Usage $0 {start/stop}"
+	exit 1
+	;;
+esac
+
+exit 0
